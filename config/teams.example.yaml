@@ -1,0 +1,83 @@
+# Team Intelligence Hub — Team Configuration
+#
+# SETUP: Copy this file to config/teams.yaml and fill in your details.
+#        config/teams.yaml is gitignored — never commit it.
+#
+# Each entry represents one scrum team. Add as many teams as you have.
+# The `aliases` list is used to infer the team from transcript content
+# when --team is not passed explicitly.
+
+teams:
+  - name: "Platform"
+
+    # Words or phrases that identify this team in transcript content.
+    # Include team name variants, project names, Jira keys, Slack channel names, product areas.
+    aliases:
+      - "platform"
+      - "infra"
+      - "infrastructure"
+      - "platform team"
+
+    jira:
+      # Your Jira instance base URL (no trailing slash)
+      base_url: "https://yourorg.atlassian.net"
+      # The Jira project key for this team (visible in ticket IDs, e.g. PLAT-123)
+      project_key: "PLAT"
+      # Your board ID — find it in the Jira board URL:
+      # .../jira/software/projects/PLAT/boards/{board_id}
+      board_id: "42"
+
+    github:
+      # GitHub org and repo where this team's docs live
+      org: "yourorg"
+      repo: "platform-team-docs"
+      # Paths within the repo for each artifact type
+      decisions_path: "docs/decisions"
+      strategy_path: "docs/strategy"
+      customer_feedback_path: "docs/customer-feedback"
+      production_log_path: "docs/production-log"
+      escalations_path: "docs/escalations"
+      # Branch where the Team Intelligence Hub (GitHub Pages) is hosted
+      hub_branch: "gh-pages"
+
+    slack:
+      # Primary team channel for FYI messages
+      channel: "#platform-team"
+      # Leadership/escalation channel — used for escalation notices and risk signals
+      escalation_channel: "#platform-leadership"
+
+    # GitHub usernames of escalation reviewers for this team.
+    # Used as PR reviewers on escalation PRs.
+    escalation_reviewers:
+      em: "em-github-username"
+      pm: "pm-github-username"
+      tech_lead: "techlead-github-username"
+
+
+  # ── Add more teams below ──────────────────────────────────────────────────
+
+  # - name: "Payments"
+  #   aliases:
+  #     - "payments"
+  #     - "checkout"
+  #     - "billing"
+  #   jira:
+  #     base_url: "https://yourorg.atlassian.net"
+  #     project_key: "PAY"
+  #     board_id: "17"
+  #   github:
+  #     org: "yourorg"
+  #     repo: "payments-team-docs"
+  #     decisions_path: "docs/decisions"
+  #     strategy_path: "docs/strategy"
+  #     customer_feedback_path: "docs/customer-feedback"
+  #     production_log_path: "docs/production-log"
+  #     escalations_path: "docs/escalations"
+  #     hub_branch: "gh-pages"
+  #   slack:
+  #     channel: "#payments-team"
+  #     escalation_channel: "#payments-leadership"
+  #   escalation_reviewers:
+  #     em: "payments-em"
+  #     pm: "payments-pm"
+  #     tech_lead: "payments-lead"
