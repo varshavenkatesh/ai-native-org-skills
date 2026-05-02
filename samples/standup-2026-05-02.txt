@@ -1,0 +1,42 @@
+Payments Team Standup — May 2, 2026
+Attendees: Arjun (tech lead), Maya, Rohan, Priya (PM), Dev, Leila
+
+---
+
+Arjun:
+Yesterday I finished the Stripe SDK v4 migration on the checkout service. It's on the feature branch, tests are passing. Today I'm opening the PR for review. One thing I want to flag — I noticed Stripe v4 changes the idempotency key format. We need to update our retry logic in the payment processor before we merge, otherwise we risk duplicate charges on retries. I'd say that's a blocker on the PR merge. Dev, can you pick that up?
+
+Dev:
+Sure, I'll look at the retry logic today. Should be a few hours. I'll comment on the PR when it's ready. Also — yesterday I was trying to set up the local test environment for the new 3DS2 flow and I'm blocked. The sandbox credentials from Stripe expired and I can't regenerate them — I don't have access to the Stripe dashboard. Leila, do you have access?
+
+Leila:
+I don't either. That's probably something Rohan set up originally. Rohan — do you have the Stripe sandbox access?
+
+Rohan:
+I do. I'll send the new credentials to Dev on Slack after standup. Also, yesterday I deployed the one-click checkout experiment to 20% of users. So far looking good — conversion rate is up 4% in the cohort versus control, zero errors in the logs. I'm planning to ramp to 50% today unless anyone has concerns. I'll keep monitoring Datadog through the day.
+
+Maya:
+No concerns from my side on the ramp. Yesterday I was on a call with Acme Corp — they're one of our enterprise customers, been with us 18 months. They flagged that our invoice PDF export is broken for invoices with more than 50 line items. They said it just times out. They tried it three times. Their finance team runs a 200-line-item export every month-end and they're now doing it manually. They were pretty frustrated. I've confirmed I can reproduce it locally. I'll file a Jira ticket and start investigating today. This feels like a high-priority fix given it's month-end.
+
+Priya:
+Agreed, flag that as high priority. Also wanted to bring up — the team has been asked to integrate with Salesforce for the enterprise billing flow by end of Q2. I got the requirement from the sales team yesterday. I haven't seen the full spec yet, but from what I understand it's a significant lift. I don't think we have the capacity for it this sprint given the Stripe migration and the 3DS2 work. I need an EM decision on whether we push back the timeline or descope something. Can someone escalate that? I don't want it to just sit.
+
+Arjun:
+I'll raise it. That's a prioritization call above my level too. Let's get it in front of the EM today.
+
+Also one more thing — we made a decision in yesterday's tech sync that I want to log: we're standardizing on idempotency keys using UUID v7 going forward across all payment service calls, not UUID v4. The reason is UUID v7 is time-ordered which makes retry deduplication simpler and aligns with what Stripe v4 expects. Rohan and I agreed on this, Dev was also on the call.
+
+Dev:
+Yeah, confirmed. That also means we should update the API contracts doc and let the platform team know since they call our payment endpoints too.
+
+Arjun:
+Good point. I'll add that to the ADR when I write it up.
+
+Leila:
+My update — yesterday I finished the accessibility audit on the checkout flow. Found two issues: the card number input doesn't have a proper aria-label, and the error state for CVV isn't announced by screen readers. Both are quick fixes, I'll knock them out today. Also filing them as Jira tickets so we have a record.
+
+Priya:
+Thanks everyone. Quick reminder — sprint review is Friday at 2pm.
+
+---
+[END OF STANDUP]
