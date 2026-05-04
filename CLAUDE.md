@@ -65,6 +65,26 @@ The slash commands are now available.
 
 ## Usage
 
+### `/RESOLVER` — start here
+
+```
+/RESOLVER <anything>
+```
+
+The resolver is the single entry point for all team intelligence requests. Give it a transcript path, a question about your team's brain, or anything else — it routes to the right skill automatically.
+
+```bash
+# Process a transcript (routes to /meeting-digest)
+/RESOLVER ~/meetings/2026-05-02-standup.txt
+
+# Query the brain
+/RESOLVER what is Maya working on this sprint?
+/RESOLVER what did we decide about Stripe SDK?
+/RESOLVER what has Acme Corp reported recently?
+```
+
+---
+
 ### `/meeting-digest`
 
 ```
@@ -108,6 +128,7 @@ The slash commands are now available.
 | GitHub — strategy | — | — | — | — | Yes |
 | GitHub PR — escalation | Yes | — | Risk signals | Needs-approval | Needs-exec-approval |
 | Slack FYI | Yes | Yes | Yes | Yes | Yes |
+| Entity pages (team/services/customers) | Yes | Yes | Yes | Yes | — |
 | Hub — sprint prep | — | Yes | — | — | — |
 | Hub — decisions | — | — | — | Yes | Yes |
 | Hub — customer feedback | — | — | Yes | — | — |
@@ -122,6 +143,7 @@ team-intelligence-hub/
 ├── CLAUDE.md                        # This file
 ├── .claude/
 │   └── commands/
+│       ├── RESOLVER.md              # /RESOLVER — entry point, routes all requests
 │       └── meeting-digest.md        # /meeting-digest slash command
 ├── config/
 │   ├── teams.example.yaml           # Config template — copy to teams.yaml
@@ -132,10 +154,24 @@ team-intelligence-hub/
 │   ├── customer-session.md          # Extraction rules for customer sessions
 │   ├── tech-discussion.md           # Extraction rules for tech discussions
 │   └── strategy.md                  # Extraction rules for strategy sessions
+├── docs/                            # Team brain — committed to GitHub
+│   ├── team/                        # One page per team member (db_tracked)
+│   │   └── _template.md
+│   ├── services/                    # One page per internal service or integration (db_tracked)
+│   │   └── _template.md
+│   ├── customers/                   # One page per named customer (db_tracked)
+│   │   └── _template.md
+│   ├── decisions/                   # Decisions log
+│   ├── production-log/              # Experiment and production status log
+│   ├── customer-feedback/           # Customer feedback log
+│   ├── escalations/                 # Escalation documents
+│   └── strategy/                    # Strategy docs and OKRs
 ├── hub/
 │   └── templates/                   # HTML templates for Team Intelligence Hub
 └── .gitignore
 ```
+
+The `docs/team/`, `docs/services/`, and `docs/customers/` directories are the **team brain** — populated automatically by `/meeting-digest` after each meeting and queryable via `/RESOLVER`.
 
 ---
 

@@ -1,3 +1,5 @@
 config/teams.yaml
 .env
 .meeting-digest-drafts/
+.claude/settings.local.json
+.DS_Store

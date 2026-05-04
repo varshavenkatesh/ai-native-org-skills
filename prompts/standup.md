@@ -52,6 +52,23 @@ Any item that needs EM, PM, or tech lead attention or decision:
 - `urgency` — `today | this sprint | informational`
 - `reviewer` — `em | pm | tech_lead` (or multiple)
 
+## Extract: Entities
+
+Extract every entity mentioned so their pages can be updated:
+
+**People** — every attendee and anyone mentioned by name:
+- `name` — first name used in transcript
+- `role` — inferred role if stated (tech lead, PM, etc.)
+- `mentions` — list of action items, blockers, or updates attributed to them
+
+**Services and systems** — any internal service, external integration, or product feature discussed:
+- `name` — service or system name (e.g. "checkout service", "Stripe SDK", "3DS2 flow")
+- `mentions` — decisions, action items, or status updates referencing this service
+
+**Customers** — any named customer or customer segment discussed:
+- `name` — customer name or segment
+- `mentions` — feedback, bug reports, or commitments referencing this customer
+
 ---
 
 ## Artifact output spec
@@ -160,3 +177,68 @@ If no items in a section, omit that section entirely.
 ### Hub update — Sprint Activity
 
 No hub update for standup. Standup content rolls up into sprint-level hub pages (planning and retrospective).
+
+---
+
+### Entity pages — people, services, customers
+
+This is the final propagation step. For every entity extracted above, create or append the relevant page. An unlinked mention is a broken brain — every person, service, and customer discussed must have a page updated.
+
+**Team member pages** — create or append `{github.team_path}/{first-name-lowercase}.md`:
+
+```markdown
+### {YYYY-MM-DD}
+
+**Action items:**
+- {item, or "none"}
+
+**Blockers:**
+- {blocker} — unblocked by {person} (or "none")
+
+**Updates:**
+- {what they reported}
+```
+
+- If the file does not exist, create it using `docs/team/_template.md` as the base, filling in name and role from the transcript. Insert the new entry at the top of the Standup History section.
+- If the file exists, prepend the new entry under `## Standup History`.
+- Include all attendees, even those with no action items (record "no blockers, no action items" so absence of update is explicit).
+
+**Service pages** — create or append `{github.services_path}/{service-slug}.md`:
+
+```markdown
+### {YYYY-MM-DD} — standup
+
+**What was discussed:**
+{1-2 sentence summary of what was said about this service}
+
+**Decisions:**
+- {decision, or "none"}
+
+**Action items:**
+- {owner}: {item} (or "none")
+```
+
+- Only create a service page if the service was meaningfully discussed (a decision, action item, or status update — not a passing mention).
+- Slugify names: lowercase, spaces to hyphens (e.g. "Stripe SDK" → `stripe-sdk.md`, "checkout service" → `checkout-service.md`).
+
+**Customer pages** — create or append `{github.customer_feedback_path}/{customer-slug}.md` as an entity page (distinct from the feedback log commit):
+
+```markdown
+### {YYYY-MM-DD} — standup
+
+**Reported:**
+{what was said about this customer}
+
+**Severity:** {critical | high | normal}
+
+**Commitments made:**
+- {commitment, or "none"}
+
+**Linked tickets:**
+- {Jira key if a ticket was created, or "none"}
+```
+
+- Only create if a named customer was discussed.
+
+These entity page commits are added to the GitHub commit list alongside the decisions log, production log, and customer feedback commits. Commit message format:
+`docs(entity): update {entity type} pages from standup [{date}]`

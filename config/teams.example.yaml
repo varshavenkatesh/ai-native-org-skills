@@ -37,6 +37,10 @@ teams:
       customer_feedback_path: "docs/customer-feedback"
       production_log_path: "docs/production-log"
       escalations_path: "docs/escalations"
+      # Entity pages — team member, service, and customer knowledge pages
+      team_path: "docs/team"
+      services_path: "docs/services"
+      customers_path: "docs/customers"
       # Branch where the Team Intelligence Hub (GitHub Pages) is hosted
       hub_branch: "gh-pages"
 
@@ -73,6 +77,9 @@ teams:
   #     customer_feedback_path: "docs/customer-feedback"
   #     production_log_path: "docs/production-log"
   #     escalations_path: "docs/escalations"
+  #     team_path: "docs/team"
+  #     services_path: "docs/services"
+  #     customers_path: "docs/customers"
   #     hub_branch: "gh-pages"
   #   slack:
   #     channel: "#payments-team"
