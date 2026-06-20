@@ -130,6 +130,33 @@ If any customer feedback was extracted, create `{customer_feedback_path}/{YYYY-M
 **Source:** standup
 ```
 
+### Hub HTML — Decisions page (when decisions are extracted)
+
+If decisions were extracted, update `hub/decisions.html` on `hub_branch` (create from `hub/templates/decisions.html` if not present).
+
+Increment `{{decision_count}}`; set `{{last_updated}}` to today.
+
+Prepend to `<!-- HUB:INSERT:decision-entries -->` — one entry per decision:
+
+```html
+<div class="decision-entry">
+  <div class="date">{YYYY-MM-DD}</div>
+  <h3>{decision — short title}</h3>
+  <div class="body">
+    {decision — one sentence}
+    <br><br>
+    <strong>Rationale:</strong> {rationale, or "not stated"}
+    <br><strong>Owner:</strong> {owner} &nbsp;·&nbsp; <strong>Area:</strong> {area} &nbsp;·&nbsp; <strong>Meeting:</strong> standup
+  </div>
+  <div class="tags">
+    <span class="tag">{area tag}</span>
+    <span class="tag">standup</span>
+  </div>
+</div>
+```
+
+Skip this step if no decisions were extracted from the standup.
+
 ### GitHub PR — escalation
 
 For each escalation, create a PR:

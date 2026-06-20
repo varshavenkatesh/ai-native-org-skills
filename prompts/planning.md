@@ -106,9 +106,40 @@ Create or update `hub/sprints/{sprint_name}.md`:
 *Generated from planning session — {YYYY-MM-DD}*
 ```
 
-### Hub update — Sprint Prep page
+### Hub HTML — Sprint Prep page
 
-Update the Sprint Prep section of the Team Intelligence Hub index to link to this report.
+Create `hub/sprints/{sprint-name-slug}.html` on `hub_branch` using `hub/templates/sprint-prep.html`.
+
+Replace template variables:
+- `{{team_name}}` → team name from config
+- `{{sprint_name}}` → sprint name or number
+- `{{sprint_start}}`, `{{sprint_end}}` → sprint dates, or `"TBD"` if not stated
+- `{{planning_date}}` → meeting date
+
+Populate insertion slots with real HTML:
+
+`<!-- HUB:INSERT:goal-blocks -->` — one block per sprint goal:
+```html
+<div class="goal-block">{goal text}</div>
+```
+
+`<!-- HUB:INSERT:ticket-rows -->` — one row per committed work item (use the example format in the template comment, filling in ticket key, summary, description, priority badge, type badge, and assignee).
+
+`<!-- HUB:INSERT:capacity-cards -->` — one card per person with point/day estimates if mentioned:
+```html
+<div class="capacity-card">
+  <div class="name">{name}</div>
+  <div class="points">{points or days}</div>
+  <div class="label">story points</div>
+</div>
+```
+
+`<!-- HUB:INSERT:risk-items -->` — one item per risk:
+```html
+<div class="risk-item"><strong>{risk title}:</strong> {mitigation or "no mitigation discussed"}</div>
+```
+
+After creating the sprint page, update `hub/index.html` on `hub_branch`: prepend a link to the new sprint page in the sprint links section.
 
 ### Slack FYI
 

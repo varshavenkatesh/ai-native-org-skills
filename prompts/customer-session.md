@@ -130,22 +130,44 @@ Create `{customer_feedback_path}/{YYYY-MM-DD}-{customer-slug}.md`:
 {bullet list with severity tags}
 ```
 
-### Hub update — Customer Feedback Synthesis
+### Hub HTML — Customer Feedback page
 
-Append to the team's customer feedback synthesis page in the Hub:
+Update `hub/customer-feedback.html` on `hub_branch`. If the file doesn't exist, create it from `hub/templates/customer-feedback.html`.
 
-```markdown
-## {customer_name} — {date}
+Update header variables: increment `{{customer_count}}` if new customer; set `{{last_updated}}` to today's date.
 
-**Session:** {session_type} | **Segment:** {customer_segment}
+In `<!-- HUB:INSERT:customer-cards -->`, prepend a new customer card (or update the existing card for this customer if one is already present):
 
-**Top themes:** {2-3 bullet points — pain points and requests}
+```html
+<div class="customer-card">
+  <div class="header">
+    <div>
+      <h3>{customer_name}</h3>
+      <div class="since">{customer_segment}{relationship context if known, e.g. "· customer since 2024-11"}</div>
+    </div>
+    <span class="risk-badge risk-{high|medium|low}">{risk level} risk</span>
+  </div>
 
-**Commitments:** {count} tracked in Jira
+  <div style="font-size:12px;font-weight:600;color:#8b949e;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em">{date} — {session_type}</div>
 
-**Risk level:** {high-risk | watch | none} {— reason if risk}
+  {for each pain point, severity critical or high:}
+  <div class="feedback-item">
+    <div class="date">{date}</div>
+    <div class="text">{pain or bug description}</div>
+    <div class="ticket"><a href="#">{jira_key if created}</a> · {type} · {priority}{· assignee if known}</div>
+  </div>
 
-[Full notes →]({github_link})
+  {if commitments were made:}
+  <div style="font-size:12px;font-weight:600;color:#8b949e;margin:16px 0 8px;text-transform:uppercase;letter-spacing:0.04em">Open commitments</div>
+  {for each commitment:}
+  <div class="commitment-item">
+    <div class="commitment-status open"></div>
+    <div>
+      <div class="text">{commitment}</div>
+      <div class="meta">{jira_key if created} · due: {deadline}</div>
+    </div>
+  </div>
+</div>
 ```
 
 ### Slack FYI

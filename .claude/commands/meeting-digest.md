@@ -119,10 +119,11 @@ For each artifact, show a numbered block:
 ```
 
 ```
-[5] HUB UPDATE — {page name}
-    Section : {section being updated}
+[5] HUB HTML — {page name}
+    File    : hub/{path}/{filename}.html  →  {hub_branch} branch
+    Action  : create / update
     ─────────────────────────────
-    {content preview}
+    {summary of what will be added or updated}
 ```
 
 After all artifacts, ask:
@@ -148,7 +149,7 @@ Do not begin execution until all artifacts have a final decision.
 
 ## Step 6 — Execute approved artifacts
 
-Execute in this order: Jira → GitHub commits → GitHub PRs → Slack → Hub. Report each result as it completes.
+Execute in this order: Jira → GitHub commits (markdown) → GitHub PRs → Slack → Hub HTML. Report each result as it completes.
 
 ### Jira tickets
 For each ticket to create:
@@ -181,9 +182,35 @@ Post via Slack API using `SLACK_BOT_TOKEN` from environment:
 
 For escalations: also post a notice to the escalation channel with a link to the PR.
 
-### Hub updates
-Commit the updated Hub page to the `hub_branch` configured for the team.
-Commit message: `hub({meeting-type}): update {page} [{date}]`
+### Hub HTML pages
+
+For each approved Hub HTML artifact:
+
+1. **If creating a new page** (sprint prep, per-session pages):
+   - Read `hub/templates/{template}.html` from this repo
+   - Replace all `{{variable}}` placeholders with real values
+   - Replace each `<!-- HUB:INSERT:{slot} -->` comment with the generated HTML content for that slot
+   - Commit the resulting file to `hub_branch` at the specified path
+
+2. **If updating an existing page** (decisions, customer feedback, strategy):
+   - Fetch the current file from `hub_branch`: `gh api repos/{org}/{repo}/contents/{path}?ref={hub_branch}`
+   - Locate the `<!-- HUB:INSERT:{slot} -->` marker
+   - Insert the new HTML content immediately after the marker (prepend — newest first)
+   - Update any `{{count}}` or `{{last_updated}}` variables in the file header
+   - Commit the updated file back to `hub_branch`
+
+3. **Commit to hub_branch:**
+   ```
+   gh api --method PUT repos/{org}/{repo}/contents/{path} \
+     --field message="hub({meeting-type}): {description} [{date}]" \
+     --field content="$(base64 -i {file})" \
+     --field branch="{hub_branch}" \
+     --field sha="{current_sha_if_updating}"
+   ```
+
+4. After any Hub HTML update, also update `hub/index.html` on `hub_branch` if the new content adds a link (e.g. a new sprint page).
+
+Commit message format: `hub({meeting-type}): {brief description} [{date}]`
 
 ---
 

@@ -154,39 +154,49 @@ Create `{strategy_path}/{horizon}-{slug}.md`:
 *Generated from strategy discussion — {YYYY-MM-DD}*
 ```
 
-### Hub update — Strategy Summary
+### Hub HTML — Strategy page
 
-Update the team's strategy page in the Hub:
+Update `hub/strategy.html` on `hub_branch`. If it doesn't exist, create from `hub/templates/strategy.html`.
 
-```markdown
-## {horizon} Strategy — {date}
+Replace template variables: `{{team_name}}`, `{{quarter}}` → horizon, `{{last_updated}}` → today, `{{strategy_date}}` → meeting date.
 
-**Direction:** {direction — 1-2 sentences}
-
-**Top priorities**
-1. {P0 initiatives}
-2. ...
-
-**Key goals**
-- {top 2-3 OKRs with targets}
-
-**Not doing:** {top 1-2 deprioritized items with reason}
-
-[Full strategy doc →]({github_link})
+`<!-- HUB:INSERT:strategy-narrative -->`:
+```html
+<p>{direction — 2-3 sentences}</p>
+<p><strong>What's driving this:</strong> {rationale}</p>
+<p><strong>What changes:</strong> {what_changes}</p>
+<p><strong>What stays:</strong> {what_stays}</p>
 ```
 
-Also append to the decisions log for each decided item:
+`<!-- HUB:INSERT:okr-blocks -->` — one block per objective with its key results (use the format in the template comment, filling in progress percentages if mentioned, otherwise leave at 0%).
 
-```markdown
-## {decision title} — {date}
+`<!-- HUB:INSERT:initiative-rows -->` — one row per initiative sorted P0 → P1 → P2 (use the format in the template comment).
 
-**Status:** {Accepted | Proposed}
-**Owner:** {owner}
-**Horizon:** {timeframe}
+### Hub HTML — Decisions page (product decisions)
 
-{decision — one sentence}
+For each decision with `status: decided` or `status: proposed`, also update `hub/decisions.html` on `hub_branch` (create from `hub/templates/decisions.html` if not present).
 
-[Full strategy doc →]({github_link})
+Increment `{{decision_count}}`; set `{{last_updated}}` to today.
+
+Prepend to `<!-- HUB:INSERT:decision-entries -->`:
+
+```html
+<div class="decision-entry">
+  <div class="date">{YYYY-MM-DD}</div>
+  <h3>{decision title}</h3>
+  <div class="body">
+    {decision — one sentence}
+    <br><br>
+    <strong>Rationale:</strong> {rationale}
+    <br><strong>Owner:</strong> {owner} &nbsp;·&nbsp; <strong>Horizon:</strong> {timeframe} &nbsp;·&nbsp; <strong>Meeting:</strong> strategy
+    {<br><a href="{github_link}">Full strategy doc →</a> once committed}
+  </div>
+  <div class="tags">
+    <span class="tag">product</span>
+    <span class="tag">strategy</span>
+    {horizon tag}
+  </div>
+</div>
 ```
 
 ### Slack FYI

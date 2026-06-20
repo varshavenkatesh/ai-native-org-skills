@@ -137,20 +137,32 @@ For decisions with `status: tentative`, create the same file but set **Status:**
 > **Pending approval from:** {approval_needed_from}
 ```
 
-### Hub update — Decisions log
+### Hub HTML — Decisions page (tech decisions)
 
-Append to the team's decisions page in the Hub:
+Update `hub/decisions.html` on `hub_branch`. If the file doesn't exist, create it from `hub/templates/decisions.html`.
 
-```markdown
-## {decision title} — {date}
+Update header variables: increment `{{decision_count}}`; set `{{last_updated}}` to today's date.
 
-**Status:** {Accepted | Proposed}
-**Area:** {area}
-**Owner:** {owner}
+In `<!-- HUB:INSERT:decision-entries -->`, prepend one entry per decision (newest first). For ADRs (`status: decided`), use class `decision-entry adr`; for tentative/needs-approval, use `decision-entry`:
 
-{decision — one sentence}
-
-[Full ADR →]({github_link})
+```html
+<div class="decision-entry {adr if decided}">
+  <div class="date">{YYYY-MM-DD}</div>
+  <h3>{decision title} {<span class="adr-badge">ADR</span> if decided}</h3>
+  <div class="body">
+    {decision — one sentence}
+    <br><br>
+    <strong>Rationale:</strong> {rationale}
+    {<br><strong>Rejected alternatives:</strong> {alternatives} if applicable}
+    <br><strong>Owner:</strong> {owner} &nbsp;·&nbsp; <strong>Meeting:</strong> tech discussion
+    {<br><a href="{github_link}">Full ADR →</a> once committed}
+  </div>
+  <div class="tags">
+    <span class="tag tag-adr">ADR</span>
+    <span class="tag">tech</span>
+    {additional area tags}
+  </div>
+</div>
 ```
 
 ### Slack FYI
