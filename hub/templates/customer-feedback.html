@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Feedback — {{team_name}} Hub</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { border-bottom: 1px solid #21262d; padding: 0 24px; display: flex; align-items: center; height: 56px; gap: 12px; }
+    header nav { margin-left: auto; display: flex; gap: 20px; font-size: 13px; }
+    header nav a { color: #8b949e; }
+    header nav a:hover { color: #e6edf3; }
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .page-meta { font-size: 14px; color: #8b949e; margin-bottom: 40px; }
+    h2 { font-size: 14px; font-weight: 600; color: #8b949e; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; margin-top: 40px; padding-bottom: 8px; border-bottom: 1px solid #21262d; }
+    .customer-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .customer-card .header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+    .customer-card h3 { font-size: 15px; font-weight: 600; color: #e6edf3; }
+    .customer-card .since { font-size: 12px; color: #8b949e; margin-top: 2px; }
+    .risk-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+    .risk-high { background: #3d1515; color: #f85149; }
+    .risk-medium { background: #2d2001; color: #d29922; }
+    .risk-low { background: #0d2a0d; color: #3fb950; }
+    .feedback-item { padding: 10px 0; border-bottom: 1px solid #21262d; }
+    .feedback-item:last-child { border-bottom: none; }
+    .feedback-item .date { font-size: 11px; color: #8b949e; margin-bottom: 4px; }
+    .feedback-item .text { font-size: 13px; color: #d4d4d4; }
+    .feedback-item .ticket { font-size: 11px; color: #58a6ff; margin-top: 4px; }
+    .commitment-item { padding: 10px 0; border-bottom: 1px solid #21262d; display: flex; gap: 12px; align-items: flex-start; }
+    .commitment-item:last-child { border-bottom: none; }
+    .commitment-status { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #30363d; flex-shrink: 0; margin-top: 2px; }
+    .commitment-status.open { border-color: #d29922; }
+    .commitment-status.done { background: #238636; border-color: #238636; }
+    .commitment-item .text { font-size: 13px; color: #d4d4d4; }
+    .commitment-item .meta { font-size: 11px; color: #8b949e; margin-top: 2px; }
+    footer { border-top: 1px solid #21262d; padding: 24px; text-align: center; font-size: 12px; color: #8b949e; margin-top: 64px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" style="color:#8b949e;font-size:13px">{{team_name}}</a>
+  <span style="color:#30363d">/</span>
+  <span style="font-size:13px;font-weight:600">Customer Feedback</span>
+  <nav>
+    <a href="sprint-prep.html">Sprint</a>
+    <a href="decisions.html">Decisions</a>
+    <a href="strategy.html">Strategy</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <h1>Customer Feedback</h1>
+  <div class="page-meta">{{team_name}} &middot; {{customer_count}} customers &middot; last updated {{last_updated}}</div>
+
+  <!-- HUB:SECTION:customers -->
+  <!-- HUB:INSERT:customer-cards -->
+  <!--
+  Example customer card (insert one per customer, sorted by risk):
+  <div class="customer-card">
+    <div class="header">
+      <div>
+        <h3>Acme Corp</h3>
+        <div class="since">Enterprise &middot; customer since 2024-11</div>
+      </div>
+      <span class="risk-badge risk-high">High risk</span>
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:#8b949e;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em">Recent feedback</div>
+    <div class="feedback-item">
+      <div class="date">2026-05-02</div>
+      <div class="text">Invoice PDF export times out for invoices with more than 50 line items. Finance team running exports manually at month-end.</div>
+      <div class="ticket"><a href="#">PAY-291</a> &middot; Bug &middot; High &middot; Assigned: Maya</div>
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:#8b949e;margin:16px 0 8px;text-transform:uppercase;letter-spacing:0.04em">Open commitments</div>
+    <div class="commitment-item">
+      <div class="commitment-status open"></div>
+      <div>
+        <div class="text">Fix invoice PDF export timeout</div>
+        <div class="meta">PAY-291 &middot; due: sprint end</div>
+      </div>
+    </div>
+  </div>
+  -->
+  <!-- /HUB:SECTION:customers -->
+
+</div>
+
+<footer>
+  {{team_name}} Team Intelligence Hub &nbsp;&middot;&nbsp; Generated by <a href="https://github.com/varshavenkatesh/ai-native-org-skills">ai-native-org-skills</a>
+</footer>
+</body>
+</html>

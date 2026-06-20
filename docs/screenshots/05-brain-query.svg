@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="780">
+  <rect width="860" height="780" rx="10" fill="#1e1e1e"/>
+  <rect width="860" height="40" rx="10" fill="#2d2d2d"/>
+  <rect y="28" width="860" height="12" fill="#2d2d2d"/>
+  <circle cx="20" cy="20" r="6" fill="#ff5f56"/>
+  <circle cx="42" cy="20" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="20" r="6" fill="#27c93f"/>
+  <text x="430" y="26" text-anchor="middle" fill="#9d9d9d" font-size="12" font-family="system-ui, -apple-system, sans-serif">Claude Code — ai-native-org-skills</text>
+
+  <!-- Query 1 -->
+  <text y="64" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#808080">&gt; </tspan><tspan fill="#d4d4d4">/RESOLVER what is Maya working on this sprint?</tspan>
+  </text>
+
+  <text x="20" y="108" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">  Reading team brain...</text>
+  <text x="20" y="130" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">  ────────────────────────────────────────────────────────</text>
+
+  <text y="174" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#dcdcaa">  Maya</tspan><tspan fill="#858585">  ·  Payments Team</tspan>
+  </text>
+
+  <text x="20" y="218" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#9cdcfe">  This sprint</text>
+  <text x="20" y="240" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">  ─────────────────────────────────────</text>
+  <text x="20" y="262" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">  • Fix invoice PDF export timeout — invoices &gt;50 line items</text>
+  <text y="284" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    PAY-291 · Bug · </tspan><tspan fill="#f44747">High priority</tspan><tspan fill="#858585"> · Acme Corp month-end deadline</tspan>
+  </text>
+  <text x="20" y="328" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">  • Investigate retry deduplication after Stripe v4 migration</text>
+  <text x="20" y="350" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">    PAY-287 · Task · Medium priority</text>
+
+  <text y="394" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">  Last standup   </tspan><tspan fill="#d4d4d4">2026-05-02</tspan>
+  </text>
+  <text y="416" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">  Source         </tspan><tspan fill="#4ec9b0">docs/team/maya.md</tspan>
+  </text>
+  <text x="20" y="438" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">  ────────────────────────────────────────────────────────</text>
+
+  <!-- Query 2 -->
+  <text y="482" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#808080">&gt; </tspan><tspan fill="#d4d4d4">/RESOLVER what did we decide about idempotency keys?</tspan>
+  </text>
+
+  <text x="20" y="526" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">  Reading docs/decisions/decisions.md...</text>
+
+  <text y="570" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#dcdcaa">  2026-05-02</tspan><tspan fill="#858585"> — Standardize idempotency keys on UUID v7</tspan>
+  </text>
+  <text x="20" y="592" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">  ─────────────────────────────────────</text>
+  <text x="20" y="614" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">  Use UUID v7 (not v4) for idempotency keys across all payment</text>
+  <text x="20" y="636" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">  service calls. UUID v7 is time-ordered, simplifies retry</text>
+  <text x="20" y="658" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">  deduplication, and aligns with Stripe v4 expectations.</text>
+  <text x="20" y="680" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">  Agreed by: Arjun, Rohan, Dev</text>
+
+  <text y="724" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#808080">&gt; </tspan><tspan fill="#858585">█</tspan>
+  </text>
+</svg>

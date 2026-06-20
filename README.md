@@ -44,7 +44,7 @@ cd ai-native-org-skills
 claude
 ```
 
-![Step 1: Clone the repo and open Claude Code](docs/screenshots/01-clone-and-open.png)
+![Step 1: Clone the repo and open Claude Code](docs/screenshots/01-clone-and-open.svg)
 
 ---
 
@@ -81,7 +81,7 @@ teams:
 
 Add one block per scrum team. The `aliases` list is how Claude identifies which team a transcript belongs to without you having to specify it manually.
 
-![Step 2: Filling in teams.yaml](docs/screenshots/02-teams-config.png)
+![Step 2: Filling in teams.yaml](docs/screenshots/02-teams-config.svg)
 
 ---
 
@@ -114,7 +114,7 @@ Or use `/meeting-digest` directly:
 /meeting-digest samples/standup-2026-05-02.txt
 ```
 
-![Step 4: Running your first /RESOLVER command](docs/screenshots/03-resolver-command.png)
+![Step 4: Running your first /RESOLVER command](docs/screenshots/03-resolver-command.svg)
 
 ---
 
@@ -192,7 +192,7 @@ Claude reads the transcript, infers the meeting type and team, then presents a f
 
 Press **A** to publish everything, **R** to step through and edit individual artifacts, or **X** to cancel. Nothing is sent until you choose.
 
-![Review panel in Claude Code](docs/screenshots/04-review-panel.png)
+![Review panel in Claude Code](docs/screenshots/04-review-panel.svg)
 
 ---
 
@@ -209,7 +209,7 @@ After a few meetings, the `docs/` directory becomes a searchable knowledge base.
 
 Claude reads the entity pages and decision log directly and answers from the content — no hallucination, no fabrication.
 
-![Querying the team brain with /RESOLVER](docs/screenshots/05-brain-query.png)
+![Querying the team brain with /RESOLVER](docs/screenshots/05-brain-query.svg)
 
 ---
 
@@ -289,20 +289,18 @@ ai-native-org-skills/
 
 ---
 
-## Adding a screenshot
+## Replacing the sample screenshots
 
-Screenshots live in `docs/screenshots/`. To add one:
+The screenshots in `docs/screenshots/` are SVG mockups. To replace them with real captures:
 
 1. Take a screenshot of the relevant step in Claude Code
-2. Save it to `docs/screenshots/` with the filename shown in the `![...]` image tags above
+2. Save it to `docs/screenshots/` with the `.svg` filename shown in the `![...]` image tags above (or change the extension to `.png` and update the README link)
 3. Commit and push
-
-The five slots already in this README:
 
 | Filename | What to capture |
 |---|---|
-| `01-clone-and-open.png` | Terminal showing `git clone` + `claude` opening |
-| `02-teams-config.png` | `teams.yaml` open in an editor with real values filled in |
-| `03-resolver-command.png` | Claude Code terminal with `/RESOLVER samples/standup-2026-05-02.txt` typed |
-| `04-review-panel.png` | The full review panel output in Claude Code |
-| `05-brain-query.png` | A `/RESOLVER` brain query and Claude's answer |
+| `01-clone-and-open.svg` | Terminal showing `git clone` + `claude` opening |
+| `02-teams-config.svg` | `teams.yaml` open with real values filled in |
+| `03-resolver-command.svg` | Claude Code terminal with `/RESOLVER samples/standup-2026-05-02.txt` typed |
+| `04-review-panel.svg` | The full review panel output in Claude Code |
+| `05-brain-query.svg` | A `/RESOLVER` brain query and Claude's answer |

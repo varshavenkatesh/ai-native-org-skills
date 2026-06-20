@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprint {{sprint_name}} — {{team_name}} Hub</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { border-bottom: 1px solid #21262d; padding: 0 24px; display: flex; align-items: center; height: 56px; gap: 12px; }
+    header .team-name { font-weight: 600; font-size: 15px; }
+    header nav { margin-left: auto; display: flex; gap: 20px; font-size: 13px; }
+    header nav a { color: #8b949e; }
+    header nav a:hover { color: #e6edf3; }
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .sprint-meta { font-size: 14px; color: #8b949e; margin-bottom: 40px; }
+    .sprint-meta span { color: #e6edf3; }
+    h2 { font-size: 16px; font-weight: 600; color: #8b949e; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; margin-top: 40px; padding-bottom: 8px; border-bottom: 1px solid #21262d; }
+    .goal-block { background: #161b22; border: 1px solid #30363d; border-left: 3px solid #58a6ff; border-radius: 6px; padding: 16px 20px; margin-bottom: 12px; font-size: 14px; color: #d4d4d4; }
+    .ticket-list { display: flex; flex-direction: column; gap: 8px; }
+    .ticket {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: start;
+    }
+    .ticket-key { font-family: "SF Mono", Menlo, Monaco, monospace; font-size: 12px; color: #58a6ff; font-weight: 600; white-space: nowrap; }
+    .ticket-summary { font-size: 14px; color: #e6edf3; }
+    .ticket-desc { font-size: 12px; color: #8b949e; margin-top: 4px; }
+    .ticket-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+    .badge-high { background: #3d1515; color: #f85149; border: 1px solid #3d1515; }
+    .badge-medium { background: #2d2001; color: #d29922; border: 1px solid #3d2c01; }
+    .badge-low { background: #0d2a0d; color: #3fb950; border: 1px solid #1a3a1a; }
+    .badge-story { background: #1f2a4a; color: #79c0ff; border: 1px solid #254070; }
+    .badge-bug { background: #3d1515; color: #f85149; border: 1px solid #3d1515; }
+    .badge-task { background: #1e2a1e; color: #56d364; border: 1px solid #2a3a2a; }
+    .assignee { font-size: 12px; color: #8b949e; }
+    .capacity-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .capacity-card { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 14px; text-align: center; }
+    .capacity-card .name { font-size: 13px; color: #e6edf3; font-weight: 500; margin-bottom: 4px; }
+    .capacity-card .points { font-size: 22px; font-weight: 700; color: #58a6ff; }
+    .capacity-card .label { font-size: 11px; color: #8b949e; }
+    .risk-item { background: #1a1200; border: 1px solid #3d2c01; border-radius: 6px; padding: 14px 16px; margin-bottom: 8px; font-size: 13px; color: #d29922; }
+    .risk-item strong { color: #e6edf3; }
+    footer { border-top: 1px solid #21262d; padding: 24px; text-align: center; font-size: 12px; color: #8b949e; margin-top: 64px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" style="color:#8b949e;font-size:13px">{{team_name}}</a>
+  <span style="color:#30363d">/</span>
+  <span style="font-size:13px;font-weight:600">Sprint {{sprint_name}}</span>
+  <nav>
+    <a href="decisions.html">Decisions</a>
+    <a href="customer-feedback.html">Customers</a>
+    <a href="strategy.html">Strategy</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <h1>Sprint {{sprint_name}}</h1>
+  <div class="sprint-meta">
+    {{team_name}} &middot;
+    <span>{{sprint_start}}</span> &ndash; <span>{{sprint_end}}</span> &middot;
+    Generated from planning session {{planning_date}}
+  </div>
+
+  <!-- HUB:SECTION:goals -->
+  <h2>Sprint Goals</h2>
+  <!-- HUB:INSERT:goal-blocks -->
+  <!-- /HUB:SECTION:goals -->
+
+  <!-- HUB:SECTION:backlog -->
+  <h2>Sprint Backlog</h2>
+  <div class="ticket-list">
+    <!-- HUB:INSERT:ticket-rows -->
+    <!--
+    Example ticket row (insert one per ticket):
+    <div class="ticket">
+      <div class="ticket-key">PAY-291</div>
+      <div>
+        <div class="ticket-summary">Fix invoice PDF export timeout</div>
+        <div class="ticket-desc">Acme Corp month-end deadline. Reproducible locally.</div>
+      </div>
+      <div class="ticket-meta">
+        <span class="badge badge-high">High</span>
+        <span class="badge badge-bug">Bug</span>
+        <span class="assignee">Maya</span>
+      </div>
+    </div>
+    -->
+  </div>
+  <!-- /HUB:SECTION:backlog -->
+
+  <!-- HUB:SECTION:capacity -->
+  <h2>Capacity</h2>
+  <div class="capacity-grid">
+    <!-- HUB:INSERT:capacity-cards -->
+  </div>
+  <!-- /HUB:SECTION:capacity -->
+
+  <!-- HUB:SECTION:risks -->
+  <h2>Risks &amp; Dependencies</h2>
+  <!-- HUB:INSERT:risk-items -->
+  <!-- /HUB:SECTION:risks -->
+
+</div>
+
+<footer>
+  {{team_name}} Team Intelligence Hub &nbsp;&middot;&nbsp; Generated by <a href="https://github.com/varshavenkatesh/ai-native-org-skills">ai-native-org-skills</a>
+</footer>
+</body>
+</html>

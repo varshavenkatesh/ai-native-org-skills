@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Intelligence Hub</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid #21262d;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      gap: 16px;
+    }
+    header .logo { font-weight: 600; font-size: 16px; color: #e6edf3; }
+    header nav { margin-left: auto; display: flex; gap: 20px; font-size: 14px; color: #8b949e; }
+    header nav a { color: #8b949e; }
+    header nav a:hover { color: #e6edf3; }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 800px;
+      margin: 80px auto 64px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #1f6feb22;
+      border: 1px solid #1f6feb55;
+      color: #58a6ff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #e6edf3;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: #58a6ff; }
+    .hero p {
+      font-size: 18px;
+      color: #8b949e;
+      max-width: 580px;
+      margin: 0 auto 32px;
+    }
+    .hero .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; text-decoration: none; }
+    .btn-primary { background: #238636; color: #fff; border: 1px solid #2ea043; }
+    .btn-secondary { background: #21262d; color: #e6edf3; border: 1px solid #30363d; }
+
+    /* ── How it works ── */
+    .section { max-width: 860px; margin: 0 auto 80px; padding: 0 24px; }
+    .section h2 { font-size: 24px; font-weight: 600; margin-bottom: 32px; color: #e6edf3; }
+
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .flow-step {
+      flex: 1;
+      min-width: 140px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .flow-step .icon { font-size: 28px; margin-bottom: 10px; }
+    .flow-step .label { font-size: 13px; font-weight: 600; color: #e6edf3; margin-bottom: 6px; }
+    .flow-step .desc { font-size: 12px; color: #8b949e; }
+    .flow-arrow {
+      color: #30363d;
+      font-size: 20px;
+      padding: 0 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── Artifact grid ── */
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .artifact-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .artifact-card .title { font-size: 14px; font-weight: 600; color: #e6edf3; margin-bottom: 6px; }
+    .artifact-card .where { font-size: 12px; color: #58a6ff; margin-bottom: 10px; }
+    .artifact-card .desc { font-size: 12px; color: #8b949e; }
+
+    /* ── Query examples ── */
+    .query-block {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .query-block .query {
+      font-family: "SF Mono", Menlo, Monaco, "Courier New", monospace;
+      font-size: 13px;
+      color: #d4d4d4;
+      margin-bottom: 16px;
+    }
+    .query-block .query::before { content: "> "; color: #8b949e; }
+    .query-block .answer {
+      font-size: 13px;
+      color: #8b949e;
+      padding-left: 16px;
+      border-left: 2px solid #30363d;
+    }
+    .query-block .answer strong { color: #e6edf3; }
+
+    /* ── Setup steps ── */
+    .steps { display: flex; flex-direction: column; gap: 16px; }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1f6feb22;
+      border: 1px solid #1f6feb55;
+      color: #58a6ff;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content .label { font-size: 14px; font-weight: 600; color: #e6edf3; margin-bottom: 4px; }
+    .step-content .desc { font-size: 13px; color: #8b949e; }
+    code {
+      font-family: "SF Mono", Menlo, Monaco, "Courier New", monospace;
+      font-size: 12px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #d4d4d4;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid #21262d;
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: #8b949e;
+    }
+    footer a { color: #58a6ff; }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 32px; }
+      .flow { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="logo">&#9670; Team Intelligence Hub</span>
+  <nav>
+    <a href="https://github.com/varshavenkatesh/ai-native-org-skills">GitHub</a>
+    <a href="https://github.com/varshavenkatesh/ai-native-org-skills/blob/main/README.md">Docs</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="badge">Built on Claude Code</div>
+  <h1>Your team's <span>institutional memory</span>,<br>queryable by AI</h1>
+  <p>Drop in a meeting transcript. Get back Jira tickets, GitHub docs, Slack FYIs, escalation PRs — and a living team brain you can query anytime.</p>
+  <div class="ctas">
+    <a href="https://github.com/varshavenkatesh/ai-native-org-skills#setup--4-steps" class="btn btn-primary">Get started</a>
+    <a href="https://github.com/varshavenkatesh/ai-native-org-skills" class="btn btn-secondary">View on GitHub</a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>How it works</h2>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="icon">&#128172;</div>
+      <div class="label">Drop in a transcript</div>
+      <div class="desc">Standup, planning, customer call, tech sync — any meeting type</div>
+    </div>
+    <div class="flow-arrow">&#8594;</div>
+    <div class="flow-step">
+      <div class="icon">&#10003;</div>
+      <div class="label">Review artifacts</div>
+      <div class="desc">Claude drafts everything. You approve before anything is published.</div>
+    </div>
+    <div class="flow-arrow">&#8594;</div>
+    <div class="flow-step">
+      <div class="icon">&#128640;</div>
+      <div class="label">Publish in one step</div>
+      <div class="desc">Jira, GitHub, Slack, and Hub updated simultaneously</div>
+    </div>
+    <div class="flow-arrow">&#8594;</div>
+    <div class="flow-step">
+      <div class="icon">&#129504;</div>
+      <div class="label">Query the brain</div>
+      <div class="desc">Ask anything. Claude answers from your team's actual history.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>What gets created</h2>
+  <div class="artifact-grid">
+    <div class="artifact-card">
+      <div class="title">Action items &amp; blockers</div>
+      <div class="where">&#8594; Jira tickets</div>
+      <div class="desc">Assigned, prioritized, and duplicate-checked against your board before creating.</div>
+    </div>
+    <div class="artifact-card">
+      <div class="title">Decisions &amp; ADRs</div>
+      <div class="where">&#8594; GitHub (docs repo)</div>
+      <div class="desc">Committed to your decisions log with context, participants, and rationale.</div>
+    </div>
+    <div class="artifact-card">
+      <div class="title">Escalation PRs</div>
+      <div class="where">&#8594; GitHub PR</div>
+      <div class="desc">Auto-assigned to your EM, PM, and tech lead for immediate review.</div>
+    </div>
+    <div class="artifact-card">
+      <div class="title">Team FYI</div>
+      <div class="where">&#8594; Slack</div>
+      <div class="desc">Bullet summary posted to your team channel. Escalation notice to leadership.</div>
+    </div>
+    <div class="artifact-card">
+      <div class="title">Entity pages</div>
+      <div class="where">&#8594; GitHub Pages</div>
+      <div class="desc">One living page per team member, service, and customer — updated after every meeting.</div>
+    </div>
+    <div class="artifact-card">
+      <div class="title">Sprint &amp; strategy docs</div>
+      <div class="where">&#8594; GitHub Pages</div>
+      <div class="desc">Sprint prep reports, OKRs, customer feedback summaries — always current.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Query your team brain</h2>
+  <div class="query-block">
+    <div class="query">/RESOLVER what is Maya working on this sprint?</div>
+    <div class="answer">
+      <strong>Maya &mdash; Payments Team</strong><br>
+      &bull; Fix invoice PDF export timeout &mdash; invoices &gt;50 line items (PAY-291, High)<br>
+      &bull; Investigate retry deduplication after Stripe v4 migration (PAY-287, Medium)<br>
+      <em>Last updated: standup 2026-05-02</em>
+    </div>
+  </div>
+  <div class="query-block">
+    <div class="query">/RESOLVER what did we decide about idempotency keys?</div>
+    <div class="answer">
+      <strong>2026-05-02 &mdash; Standardize idempotency keys on UUID v7</strong><br>
+      Use UUID v7 (not v4) across all payment service calls. Time-ordered, simplifies retry deduplication, aligns with Stripe v4. Agreed by: Arjun, Rohan, Dev.
+    </div>
+  </div>
+  <div class="query-block">
+    <div class="query">/RESOLVER what has Acme Corp reported recently?</div>
+    <div class="answer">
+      <strong>Acme Corp &mdash; Enterprise customer (18 months)</strong><br>
+      &bull; Invoice PDF export times out for invoices &gt;50 line items. Finance team running exports manually. Month-end deadline. Filed: PAY-291.<br>
+      <em>Source: standup 2026-05-02</em>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Get started in 4 steps</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="label">Clone and open in Claude Code</div>
+        <div class="desc"><code>git clone https://github.com/varshavenkatesh/ai-native-org-skills</code> then <code>claude</code></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="label">Configure your teams</div>
+        <div class="desc">Copy <code>config/teams.example.yaml</code> to <code>config/teams.yaml</code> and fill in Jira, GitHub, Slack, and reviewer details for each scrum team.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="label">Set environment variables</div>
+        <div class="desc">Add <code>JIRA_API_TOKEN</code>, <code>JIRA_EMAIL</code>, and <code>SLACK_BOT_TOKEN</code> to your shell profile. Run <code>gh auth login</code> for GitHub.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="label">Run your first digest</div>
+        <div class="desc"><code>/RESOLVER samples/standup-2026-05-02.txt</code> &mdash; try the included sample transcript to see the full review panel.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Built with <a href="https://claude.ai/code">Claude Code</a> &nbsp;&middot;&nbsp;
+  <a href="https://github.com/varshavenkatesh/ai-native-org-skills">GitHub</a> &nbsp;&middot;&nbsp;
+  Open source, MIT license
+</footer>
+
+</body>
+</html>

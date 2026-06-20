@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="1580">
+  <rect width="860" height="1580" rx="10" fill="#1e1e1e"/>
+  <rect width="860" height="40" rx="10" fill="#2d2d2d"/>
+  <rect y="28" width="860" height="12" fill="#2d2d2d"/>
+  <circle cx="20" cy="20" r="6" fill="#ff5f56"/>
+  <circle cx="42" cy="20" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="20" r="6" fill="#27c93f"/>
+  <text x="430" y="26" text-anchor="middle" fill="#9d9d9d" font-size="12" font-family="system-ui, -apple-system, sans-serif">Claude Code — ai-native-org-skills</text>
+
+  <text y="64" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#808080">&gt; </tspan><tspan fill="#d4d4d4">/RESOLVER samples/standup-2026-05-02.txt</tspan>
+  </text>
+
+  <!-- Review panel header -->
+  <text x="20" y="108" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#569cd6">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+  <text x="20" y="130" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#dcdcaa">  MEETING DIGEST — REVIEW BEFORE PUBLISHING</text>
+  <text x="20" y="152" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#569cd6">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+  <text y="174" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">  Meeting : </tspan><tspan fill="#d4d4d4">standup</tspan>
+  </text>
+  <text y="196" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">  Team    : </tspan><tspan fill="#d4d4d4">Payments</tspan>
+  </text>
+  <text y="218" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">  Date    : </tspan><tspan fill="#d4d4d4">2026-05-02</tspan>
+  </text>
+  <text x="20" y="240" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#569cd6">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+
+  <!-- Artifact 1: Jira ticket -->
+  <text y="284" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#dcdcaa">[1] </tspan><tspan fill="#4ec9b0">JIRA TICKET</tspan><tspan fill="#858585"> — PAY</tspan>
+  </text>
+  <text y="306" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Summary  : </tspan><tspan fill="#d4d4d4">Fix invoice PDF export timeout for &gt;50 line items</tspan>
+  </text>
+  <text y="328" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Type     : </tspan><tspan fill="#d4d4d4">Bug</tspan>
+  </text>
+  <text y="350" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Priority : </tspan><tspan fill="#f44747">High</tspan>
+  </text>
+  <text y="372" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Assignee : </tspan><tspan fill="#d4d4d4">Maya</tspan>
+  </text>
+  <text y="394" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Labels   : </tspan><tspan fill="#d4d4d4">customer-reported, month-end</tspan>
+  </text>
+  <text x="20" y="416" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">    ─────────────────────────────────────────────────</text>
+  <text x="20" y="438" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    Acme Corp reported invoice PDF export times out for invoices</text>
+  <text x="20" y="460" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    with more than 50 line items. Reproducible locally. Finance team</text>
+  <text x="20" y="482" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    running 200-line-item exports manually. High priority given month-end.</text>
+  <text x="20" y="504" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">    ─────────────────────────────────────────────────</text>
+  <text x="20" y="526" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">    Duplicate check: will search PAY board before creating</text>
+
+  <!-- Artifact 2: Jira ticket -->
+  <text y="570" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#dcdcaa">[2] </tspan><tspan fill="#4ec9b0">JIRA TICKET</tspan><tspan fill="#858585"> — PAY</tspan>
+  </text>
+  <text y="592" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Summary  : </tspan><tspan fill="#d4d4d4">Update payment retry logic for Stripe v4 idempotency key format</tspan>
+  </text>
+  <text y="614" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Type     : </tspan><tspan fill="#d4d4d4">Task</tspan>
+  </text>
+  <text y="636" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Priority : </tspan><tspan fill="#f44747">High</tspan>
+  </text>
+  <text y="658" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Assignee : </tspan><tspan fill="#d4d4d4">Dev</tspan>
+  </text>
+  <text x="20" y="680" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">    ─────────────────────────────────────────────────</text>
+  <text x="20" y="702" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    Stripe SDK v4 changes idempotency key format. Retry logic in</text>
+  <text x="20" y="724" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    payment processor must be updated before Stripe migration PR merges</text>
+  <text x="20" y="746" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    to avoid duplicate charges on retries.</text>
+
+  <!-- Artifact 3: GitHub commit -->
+  <text y="790" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#dcdcaa">[3] </tspan><tspan fill="#4ec9b0">GITHUB COMMIT</tspan><tspan fill="#858585"> — acmecorp/payments-team-docs → docs/decisions/decisions.md</tspan>
+  </text>
+  <text y="812" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Action  : </tspan><tspan fill="#d4d4d4">append</tspan>
+  </text>
+  <text x="20" y="834" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">    ─────────────────────────────────────────────────</text>
+  <text x="20" y="856" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#6a9955">    ## 2026-05-02 — Standardize idempotency keys on UUID v7</text>
+  <text x="20" y="878" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    Decision: Use UUID v7 (not v4) for idempotency keys across all</text>
+  <text x="20" y="900" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    payment service calls. UUID v7 is time-ordered, simplifies retry</text>
+  <text x="20" y="922" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    deduplication, and aligns with Stripe v4 expectations.</text>
+  <text x="20" y="944" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">    Agreed by: Arjun, Rohan, Dev</text>
+
+  <!-- Artifact 4: GitHub PR -->
+  <text y="988" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#dcdcaa">[4] </tspan><tspan fill="#4ec9b0">GITHUB PR</tspan><tspan fill="#858585"> — acmecorp/payments-team-docs</tspan>
+  </text>
+  <text y="1010" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Title     : </tspan><tspan fill="#d4d4d4">[ESCALATION] Salesforce billing integration — capacity decision needed</tspan>
+  </text>
+  <text y="1032" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Reviewers : </tspan><tspan fill="#d4d4d4">varsha-v, priya-m, arjun-k</tspan>
+  </text>
+  <text y="1054" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#858585">    Labels    : </tspan><tspan fill="#d4d4d4">escalation, standup</tspan>
+  </text>
+  <text x="20" y="1076" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">    ─────────────────────────────────────────────────</text>
+  <text x="20" y="1098" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    Priya flagged that the Salesforce enterprise billing integration</text>
+  <text x="20" y="1120" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    (Q2 deadline) conflicts with current sprint capacity (Stripe</text>
+  <text x="20" y="1142" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    migration + 3DS2). Requesting EM decision: push timeline or descope.</text>
+
+  <!-- Artifact 5: Slack -->
+  <text y="1186" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#dcdcaa">[5] </tspan><tspan fill="#4ec9b0">SLACK</tspan><tspan fill="#858585"> — #payments-team</tspan>
+  </text>
+  <text x="20" y="1208" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">    ─────────────────────────────────────────────────</text>
+  <text x="20" y="1230" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    *Payments Standup — 2026-05-02*</text>
+  <text x="20" y="1252" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    • Stripe SDK v4 migration branch ready for review (Arjun)</text>
+  <text x="20" y="1274" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    • One-click checkout experiment at 20% → ramping to 50% (Rohan)</text>
+  <text x="20" y="1296" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    • Invoice PDF timeout bug filed — high priority (Maya)</text>
+  <text x="20" y="1318" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#d4d4d4">    • Stripe sandbox creds being sent to Dev (Rohan)</text>
+  <text x="20" y="1340" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#ff9800">    ⚠ Escalation PR opened: Salesforce integration capacity</text>
+
+  <!-- Selection -->
+  <text x="20" y="1384" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#569cd6">─────────────────────────────────────────────────────────────────</text>
+  <text x="20" y="1406" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#dcdcaa">  Found 5 artifacts. How would you like to proceed?</text>
+  <text y="1450" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#4ec9b0">  A</tspan><tspan fill="#858585">  — Approve all and publish</tspan>
+  </text>
+  <text y="1472" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#4ec9b0">  R</tspan><tspan fill="#858585">  — Review individually (approve / edit / skip each)</tspan>
+  </text>
+  <text y="1494" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#4ec9b0">  X</tspan><tspan fill="#858585">  — Cancel</tspan>
+  </text>
+  <text x="20" y="1516" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#569cd6">─────────────────────────────────────────────────────────────────</text>
+</svg>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy — {{team_name}} Hub</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { border-bottom: 1px solid #21262d; padding: 0 24px; display: flex; align-items: center; height: 56px; gap: 12px; }
+    header nav { margin-left: auto; display: flex; gap: 20px; font-size: 13px; }
+    header nav a { color: #8b949e; }
+    header nav a:hover { color: #e6edf3; }
+    .container { max-width: 860px; margin: 0 auto; padding: 40px 24px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .page-meta { font-size: 14px; color: #8b949e; margin-bottom: 40px; }
+    h2 { font-size: 14px; font-weight: 600; color: #8b949e; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; margin-top: 40px; padding-bottom: 8px; border-bottom: 1px solid #21262d; }
+    .narrative {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 24px;
+      font-size: 14px;
+      color: #d4d4d4;
+      margin-bottom: 24px;
+    }
+    .okr-block { margin-bottom: 24px; }
+    .objective {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-left: 3px solid #58a6ff;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 8px;
+    }
+    .objective .label { font-size: 11px; color: #58a6ff; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .objective .text { font-size: 15px; font-weight: 600; color: #e6edf3; }
+    .key-result {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-left: 20px;
+      margin-bottom: 6px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .key-result .kr-text { font-size: 13px; color: #d4d4d4; }
+    .progress-bar { width: 100px; height: 6px; background: #21262d; border-radius: 3px; overflow: hidden; }
+    .progress-bar .fill { height: 100%; background: #238636; border-radius: 3px; }
+    .progress-bar .fill.at-risk { background: #d29922; }
+    .progress-bar .fill.behind { background: #da3633; }
+    .progress-pct { font-size: 12px; color: #8b949e; text-align: right; margin-top: 4px; }
+    .initiative-row {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .initiative-rank { font-size: 20px; font-weight: 700; color: #30363d; min-width: 28px; }
+    .initiative-body { flex: 1; }
+    .initiative-body .title { font-size: 14px; font-weight: 600; color: #e6edf3; margin-bottom: 4px; }
+    .initiative-body .desc { font-size: 12px; color: #8b949e; }
+    .initiative-status { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 12px; white-space: nowrap; }
+    .status-active { background: #0d2a0d; color: #3fb950; border: 1px solid #1a3a1a; }
+    .status-planned { background: #161b22; color: #8b949e; border: 1px solid #30363d; }
+    .status-blocked { background: #3d1515; color: #f85149; border: 1px solid #3d1515; }
+    footer { border-top: 1px solid #21262d; padding: 24px; text-align: center; font-size: 12px; color: #8b949e; margin-top: 64px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" style="color:#8b949e;font-size:13px">{{team_name}}</a>
+  <span style="color:#30363d">/</span>
+  <span style="font-size:13px;font-weight:600">Strategy</span>
+  <nav>
+    <a href="sprint-prep.html">Sprint</a>
+    <a href="decisions.html">Decisions</a>
+    <a href="customer-feedback.html">Customers</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <h1>Strategy — {{quarter}}</h1>
+  <div class="page-meta">{{team_name}} &middot; last updated {{last_updated}} &middot; from strategy session {{strategy_date}}</div>
+
+  <!-- HUB:SECTION:narrative -->
+  <h2>Direction</h2>
+  <div class="narrative">
+    <!-- HUB:INSERT:strategy-narrative -->
+  </div>
+  <!-- /HUB:SECTION:narrative -->
+
+  <!-- HUB:SECTION:okrs -->
+  <h2>OKRs</h2>
+  <!-- HUB:INSERT:okr-blocks -->
+  <!--
+  Example OKR block:
+  <div class="okr-block">
+    <div class="objective">
+      <div class="label">Objective</div>
+      <div class="text">Deliver reliable, enterprise-grade payment infrastructure</div>
+    </div>
+    <div class="key-result">
+      <div>
+        <div class="kr-text">Payment success rate &ge; 99.5% across all methods</div>
+      </div>
+      <div>
+        <div class="progress-bar"><div class="fill" style="width:72%"></div></div>
+        <div class="progress-pct">72%</div>
+      </div>
+    </div>
+    <div class="key-result">
+      <div>
+        <div class="kr-text">Stripe v4 migration completed with zero downtime</div>
+      </div>
+      <div>
+        <div class="progress-bar"><div class="fill at-risk" style="width:45%"></div></div>
+        <div class="progress-pct">45%</div>
+      </div>
+    </div>
+  </div>
+  -->
+  <!-- /HUB:SECTION:okrs -->
+
+  <!-- HUB:SECTION:initiatives -->
+  <h2>Prioritized Initiatives</h2>
+  <!-- HUB:INSERT:initiative-rows -->
+  <!--
+  Example initiative row:
+  <div class="initiative-row">
+    <div class="initiative-rank">#1</div>
+    <div class="initiative-body">
+      <div class="title">Complete Stripe v4 migration</div>
+      <div class="desc">Migrate all payment endpoints to Stripe SDK v4. Update idempotency keys to UUID v7. Required before Q3.</div>
+    </div>
+    <span class="initiative-status status-active">Active</span>
+  </div>
+  -->
+  <!-- /HUB:SECTION:initiatives -->
+
+</div>
+
+<footer>
+  {{team_name}} Team Intelligence Hub &nbsp;&middot;&nbsp; Generated by <a href="https://github.com/varshavenkatesh/ai-native-org-skills">ai-native-org-skills</a>
+</footer>
+</body>
+</html>

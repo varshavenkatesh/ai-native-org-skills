@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420">
+  <rect width="860" height="420" rx="10" fill="#1e1e1e"/>
+  <rect width="860" height="40" rx="10" fill="#2d2d2d"/>
+  <rect y="28" width="860" height="12" fill="#2d2d2d"/>
+  <circle cx="20" cy="20" r="6" fill="#ff5f56"/>
+  <circle cx="42" cy="20" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="20" r="6" fill="#27c93f"/>
+  <text x="430" y="26" text-anchor="middle" fill="#9d9d9d" font-size="12" font-family="system-ui, -apple-system, sans-serif">Terminal — ai-native-org-skills</text>
+
+  <text y="64" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#4ec9b0">varsha@mac ~ % </tspan><tspan fill="#d4d4d4">git clone https://github.com/varshavenkatesh/ai-native-org-skills</tspan>
+  </text>
+  <text x="20" y="86" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">Cloning into 'ai-native-org-skills'...</text>
+  <text x="20" y="108" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">remote: Enumerating objects: 52, done.</text>
+  <text x="20" y="130" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">remote: Counting objects: 100% (52/52), done.</text>
+  <text x="20" y="152" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">Receiving objects: 100% (52/52), 18.4 KiB | 3.1 MiB/s, done.</text>
+
+  <text y="196" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#4ec9b0">varsha@mac ~ % </tspan><tspan fill="#d4d4d4">cd ai-native-org-skills</tspan>
+  </text>
+  <text y="218" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#4ec9b0">varsha@mac ai-native-org-skills % </tspan><tspan fill="#d4d4d4">claude</tspan>
+  </text>
+
+  <text x="20" y="262" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#dcdcaa">  ✻ Welcome to Claude Code</text>
+  <text x="20" y="284" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#4a4a4a">  ────────────────────────────────────────────────────────</text>
+  <text y="306" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#4caf50">  ✓ </tspan><tspan fill="#d4d4d4">CLAUDE.md loaded — Team Intelligence Hub ready</tspan>
+  </text>
+  <text x="20" y="328" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13" fill="#858585">  Commands: /RESOLVER · /meeting-digest</text>
+
+  <text y="374" font-family="'SF Mono', Menlo, Monaco, 'Courier New', monospace" font-size="13">
+    <tspan x="20" fill="#808080">&gt; </tspan><tspan fill="#d4d4d4 ">█</tspan>
+  </text>
+</svg>
