@@ -289,18 +289,3 @@ ai-native-org-skills/
 
 ---
 
-## Replacing the sample screenshots
-
-The screenshots in `docs/screenshots/` are SVG mockups. To replace them with real captures:
-
-1. Take a screenshot of the relevant step in Claude Code
-2. Save it to `docs/screenshots/` with the `.svg` filename shown in the `![...]` image tags above (or change the extension to `.png` and update the README link)
-3. Commit and push
-
-| Filename | What to capture |
-|---|---|
-| `01-clone-and-open.svg` | Terminal showing `git clone` + `claude` opening |
-| `02-teams-config.svg` | `teams.yaml` open with real values filled in |
-| `03-resolver-command.svg` | Claude Code terminal with `/RESOLVER samples/standup-2026-05-02.txt` typed |
-| `04-review-panel.svg` | The full review panel output in Claude Code |
-| `05-brain-query.svg` | A `/RESOLVER` brain query and Claude's answer |
