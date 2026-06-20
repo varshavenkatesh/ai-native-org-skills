@@ -1,0 +1,67 @@
+Customer Session — Fintech Corp
+Session type: Quarterly Business Review (QBR)
+Date: June 18, 2026
+Customer attendees: Sandra Lee (CTO), Marcus Webb (Head of Finance)
+Our attendees: Priya (PM), Arjun (tech lead), Maya
+
+---
+
+Priya:
+Thanks for joining Sandra, Marcus. We want to use this QBR to get honest feedback on how the payment infrastructure is working for you and where we can do better. Let's start with what's been working.
+
+Sandra:
+I'll be direct. The uptime has been excellent — we haven't had a payment outage in four months, which is the longest streak since we switched to your platform. Marcus's team is happy with that. The checkout conversion improvements have also been measurable — we saw a 6% lift after you shipped the one-click flow.
+
+Marcus:
+Yes, the conversion improvement is real and meaningful for us. That's revenue we weren't capturing before.
+
+Priya:
+That's great to hear. Where are the pain points?
+
+Sandra:
+Two big ones. First, the invoice PDF export is still broken for us. I know your team is aware — Maya and I spoke about it last month — but it's been two months and it's still timing out for any invoice over 50 line items. My finance team is doing manual exports every month-end. That's not acceptable for an enterprise-grade platform. We're on an annual contract and this is going to be a renewal conversation topic if it's not fixed.
+
+Maya:
+I hear you, Sandra. We have it in the sprint — it's the top priority this cycle. The fix is scoped and assigned, targeting end of sprint which is July 1. I'll send you a direct update the day it ships.
+
+Sandra:
+Good. July 1 is actually our month-end so the timing is tight but workable if it ships on time.
+
+Marcus:
+The second issue is around reconciliation. When we run our end-of-month reconciliation, the transaction export doesn't include the Stripe payment intent ID. Our accounting software needs that to match payments to invoices. We've been doing it manually with a spreadsheet. It's a small thing technically but it's two hours of manual work every month for someone on my team.
+
+Priya:
+That's a clean ask. Arjun, is that a config change or a code change?
+
+Arjun:
+It's a code change — we need to expose the payment intent ID in the export endpoint. Probably a half-day of work, maybe a day with testing. It's not in this sprint but I can get it into sprint 44.
+
+Marcus:
+If it could be sprint 44, that would be great. Our next reconciliation is July 31.
+
+Priya:
+I'll commit to sprint 44 for the payment intent ID in exports.
+
+Sandra:
+There's one more thing I want to raise, and it's forward-looking. We're planning to expand into the European market in Q4. We'll need SEPA direct debit support. I know that's a bigger lift — we're not asking for it this quarter — but I want to flag it so you can start thinking about it. If you don't have SEPA support by Q4, we'll need to evaluate other providers. That's not a threat, it's just a business reality.
+
+Priya:
+That's really important context, thank you for flagging it early. It's on our roadmap but I'd be giving you false confidence if I committed to a date today. Can we do a dedicated technical call in late July to map out what SEPA would require?
+
+Sandra:
+Yes, that works. Set it up with my EA.
+
+Arjun:
+SEPA support would be a significant project — banking rails, compliance, testing in European markets. Probably a quarter of work for the team. I'd want to do a proper spike before committing.
+
+Priya:
+Noted. We'll do the spike as part of our Q3 planning.
+
+Sandra:
+One positive thing I want to make sure gets logged: the developer documentation has improved dramatically. Our dev team was able to integrate the new 3DS2 flow with no support tickets. That's a first for us. Whatever you're doing there, keep doing it.
+
+Priya:
+That's really good to hear, I'll pass that to the team.
+
+---
+[END OF QBR]

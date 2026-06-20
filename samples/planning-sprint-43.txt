@@ -1,0 +1,66 @@
+Payments Team — Sprint 43 Planning
+Date: June 17, 2026
+Attendees: Arjun (tech lead), Maya, Rohan, Dev, Priya (PM), Leila
+
+---
+
+Priya:
+Ok everyone, let's get Sprint 43 locked. We have two weeks, June 18 through July 1. I want us to leave today with a clear sprint goal and committed backlog. Big picture: the Stripe v4 migration is the anchor of this sprint. Everything else fits around it.
+
+Sprint goal proposal: "Complete the Stripe v4 migration on all payment endpoints and ship 3DS2 to production at 100%." Does that work for everyone?
+
+Arjun:
+Works for me. Stripe v4 is the critical path — everything downstream (retry logic, idempotency keys, the 3DS2 flow) depends on it. I'd say it's a three-person effort: me, Dev, and Rohan.
+
+Priya:
+Agreed. Let me go through the committed items.
+
+First: Stripe v4 migration — payment processor. Owner: Arjun. This is the core migration, estimated 8 points. It's a must-have.
+
+Second: Update retry logic for UUID v7 idempotency keys. Owner: Dev. 5 points. Must-have — it's a blocker on the migration merge.
+
+Third: 3DS2 flow — ramp from 50% to 100% and close the experiment. Owner: Rohan. 3 points. Must-have. We need Datadog monitoring in place before we ramp.
+
+Fourth: Invoice PDF export timeout fix. Owner: Maya. 8 points. Must-have — Acme Corp is waiting on this, month-end is July 1.
+
+Fifth: Accessibility fixes on checkout — aria-label and CVV error state. Owner: Leila. 2 points. Should-have.
+
+Sixth: Salesforce billing integration — scoping spike only. Owner: Priya and Arjun together. 3 points. Should-have. We're not building it this sprint, just understanding the scope so we can plan Q3.
+
+That's 29 points committed. Leila is at reduced capacity — she's out Thursday and Friday of week two, so she only has 6 days instead of 10. Everyone else is full capacity.
+
+Arjun:
+One dependency to flag: the Stripe v4 migration depends on Stripe sending us their updated sandbox credentials. Dev reached out but we're still waiting. If those don't come by Wednesday, we'll be blocked on local testing.
+
+Dev:
+I'll ping our Stripe account manager today. Worst case we test against staging.
+
+Priya:
+Flag it as a risk. Also flagging: the Salesforce integration spike is dependent on the sales team sending us the technical spec. I've asked twice, still waiting. If it doesn't arrive by end of week one we'll descope the spike to next sprint.
+
+Rohan:
+For the 3DS2 ramp — I want to confirm we have buy-in from the platform team on the Datadog alert thresholds before I ramp to 100%. They monitor our payment success rate too. Can Arjun coordinate with them?
+
+Arjun:
+Yes, I'll sync with the platform team today or tomorrow.
+
+Priya:
+Good. Anything deferred from last sprint?
+
+Maya:
+The receipt email redesign got pushed. We deprioritized it because the PDF timeout was higher urgency. Moving it to sprint 44 backlog.
+
+Priya:
+Makes sense. Anything else before we close?
+
+Leila:
+I want to raise one risk: the checkout aria-label fix touches the same component as the Stripe v4 checkout integration. If Arjun's work lands mid-sprint, there might be merge conflicts. We should coordinate.
+
+Arjun:
+Good catch. Let's plan a sync Thursday of week one so we can sequence the merges.
+
+Priya:
+Logged. Sprint 43 is locked. Slack FYI going out after this.
+
+---
+[END OF PLANNING SESSION]

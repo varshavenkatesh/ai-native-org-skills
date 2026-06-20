@@ -1,0 +1,69 @@
+Payments Team — Tech Discussion: API Versioning Strategy
+Date: June 19, 2026
+Attendees: Arjun (tech lead), Dev, Rohan, Maya, Leila
+
+---
+
+Arjun:
+I called this discussion because we have a real problem. We've broken two API clients in the last quarter because we changed endpoint behavior without a versioning strategy. The Stripe v4 migration is the latest example — we had to update four internal services simultaneously because they all depended on the same unversioned payment endpoint. We need to fix this before we add SEPA and other new payment rails.
+
+Let me lay out the options I've been thinking about.
+
+Option A: URL-based versioning — prefix all endpoints with /v1/, /v2/, etc. This is what Stripe does. When we break something, we create a new version and deprecate the old one with a sunset date.
+
+Option B: Header-based versioning — callers pass an Accept-Version header. The API serves the right response based on that. No URL changes needed. GitHub does this.
+
+Option C: No versioning, just additive changes only — we commit to never removing or changing existing fields, only adding new ones. This is simple but limits our ability to fix design mistakes.
+
+Dev:
+I've worked with all three. My strong preference is URL versioning. It's explicit, cacheable, and you can see the version in logs immediately. Header versioning sounds elegant but in practice it's invisible — when something breaks you can't tell which version was called without grepping headers in your log pipeline.
+
+Rohan:
+Agreed on URL versioning. One thing I want to add: we should define a deprecation policy now, not later. I'd suggest minimum 6-month overlap between old and new versions. We've been burned by clients that don't update quickly.
+
+Maya:
+What about internal services? Do we version those too, or just the external-facing API?
+
+Arjun:
+Great question. I think we should separate the two. External API: URL versioning with deprecation policy. Internal service-to-service calls: we use typed gRPC contracts with breaking change detection in CI. Those aren't the same problem.
+
+Dev:
+That makes sense. Internal gRPC with protobuf already gives us schema evolution — if you add a required field without a default you get a CI failure. We should enforce that more strictly.
+
+Arjun:
+Right. So the decision is: external API gets URL versioning (/v1/), internal gets gRPC with protobuf linting. What's the deprecation window?
+
+Rohan:
+Six months minimum. I'd say twelve for anything used by enterprise customers like Fintech Corp.
+
+Leila:
+What about documentation? We need to publish the version changelog somewhere customers can find it. Right now nothing is documented.
+
+Arjun:
+Good point. Let's commit to a CHANGELOG.md in the API docs repo, updated on every version bump. And a deprecation notice email to affected API consumers 90 days before sunset.
+
+Dev:
+I can set up the linting rule for protobuf breaking changes in CI this sprint. It's a one-day task.
+
+Arjun:
+Let's do it. Summary of decisions:
+One: External API uses URL-based versioning. /v1/ is current. New breaking changes go to /v2/.
+Two: Minimum deprecation window is 6 months for standard customers, 12 months for enterprise.
+Three: Internal services use gRPC with protobuf breaking-change linting enforced in CI.
+Four: Deprecation notices go via email to affected consumers at 90 days before sunset.
+Five: CHANGELOG.md maintained in API docs repo, updated on every version.
+
+Dev:
+I'll write the ADR and get it reviewed by end of week.
+
+Arjun:
+One open question we didn't fully resolve: what's the migration path for existing callers of the unversioned endpoints? We have about 12 internal services hitting /payments/charge directly with no version. They'll need to be updated to /v1/payments/charge. That's coordination work. I don't think we have time this sprint.
+
+Rohan:
+Let's make that a spike in sprint 44: audit all callers, document the migration plan, create tickets for each service team.
+
+Arjun:
+Agreed. That's a sprint 44 spike.
+
+---
+[END OF TECH DISCUSSION]

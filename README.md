@@ -23,6 +23,33 @@ You review every artifact before anything is published. Nothing touches Jira, Sl
 
 ---
 
+## Live example — the Payments Team Intelligence Hub
+
+Here's a real hub built end-to-end with this toolkit. Five mock meeting transcripts — a **standup**, a sprint planning, a **customer session** (QBR), a tech discussion, and a **strategy session** — were each fed to `/RESOLVER`, one at a time. The result is two synchronized outputs: a browsable **HTML hub for humans** and a **markdown brain for agents**.
+
+🔗 **[Browse the live hub →](https://varshavenkatesh.github.io/payments-context-hub/)** &nbsp;·&nbsp; [Source repo](https://github.com/varshavenkatesh/payments-context-hub) &nbsp;·&nbsp; [How it was built (walkthrough)](https://varshavenkatesh.github.io/ai-native-org-skills/example.html)
+
+[![The Payments Team Intelligence Hub home page](docs/screenshots/06-hub-overview.svg)](https://varshavenkatesh.github.io/payments-context-hub/)
+
+### How each meeting fed the hub
+
+| Meeting fed in | Date | What Claude extracted | Where it landed |
+|---|---|---|---|
+| **Standup** | May 2 | Action items, a blocker, a decision (UUID v7), prod status, customer report, escalation | Jira tickets, escalation PR, `decisions.html`, team pages |
+| **Sprint planning** | Jun 17 | 6 backlog items (29 pts), capacity, risks, cross-team deps | `sprints/sprint-43.html`, Jira tickets |
+| **Customer session** (QBR) | Jun 18 | Renewal risk, 3 commitments, 3 positive signals, direct quotes | `customer-feedback.html`, customer entity page, Slack escalation |
+| **Tech discussion** | Jun 19 | 3 ADRs (URL versioning, gRPC, deprecation policy) | `decisions.html`, full ADR markdown |
+| **Strategy session** | Jun 20 | OKRs, 5 P0/P1/P2 initiatives, 2 product decisions, exec-approval flag | `strategy.html`, `decisions.html` |
+
+The standup surfaced a customer pain point that the strategy session later turned into a P0 initiative, and the customer QBR raised the renewal risk that ties them together — all cross-linked in the hub. That's the point: context from one meeting compounds across the others.
+
+**Two outputs, one pipeline:**
+
+- 🧠 **Markdown for agents** — committed to `main`. Entity pages, decision logs, ADRs. This is what `/RESOLVER` reads to answer questions.
+- 👀 **HTML for humans** — published to `gh-pages` (GitHub Pages). Tiles, badges, and cross-links anyone can browse — no terminal required.
+
+---
+
 ## Prerequisites
 
 | Tool | Install |

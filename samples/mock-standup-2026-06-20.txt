@@ -1,0 +1,19 @@
+Payments Team Standup — June 20, 2026
+Attendees: Arjun (tech lead), Maya, Dev
+
+---
+
+Arjun:
+Yesterday I merged the Stripe SDK v4 PR. It's live in staging, no issues so far. Today I'm writing up the ADR for UUID v7. Nothing blocking me.
+
+Maya:
+The Acme Corp invoice export bug is fixed and deployed to staging. I've notified their team and waiting for confirmation. Today I'm starting on the Salesforce billing integration spec review. One thing — I need access to the Salesforce sandbox before I can go further. Arjun, can you get me added?
+
+Arjun:
+Sure, I'll ping IT today.
+
+Dev:
+API contracts doc is updated, platform team has been notified. No blockers. Today I'm starting the 3DS2 test coverage gaps — Priya flagged we're missing edge case tests for the decline flow.
+
+---
+[END OF STANDUP]

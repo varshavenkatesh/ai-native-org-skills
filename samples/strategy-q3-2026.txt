@@ -1,0 +1,58 @@
+Payments Team — Q3 2026 Strategy Session
+Date: June 20, 2026
+Attendees: Priya (PM), Arjun (tech lead), Rohan, Maya, Varsha (EM)
+
+---
+
+Varsha:
+Let's align on Q3. We're coming off a strong Q2 — Stripe v4 migration is done, 3DS2 is live, invoice PDF is fixed. The question is where we invest in Q3 to move the product forward. Priya, take it away.
+
+Priya:
+Thanks. Q3 runs July through September. Three strategic bets I want to propose.
+
+First: SEPA direct debit. Fintech Corp flagged this as a renewal risk if we don't have it by Q4. There are other enterprise prospects in the EU pipeline who need it too. This is probably 8-10 weeks of engineering for one team. If we start in Q3 we can ship in early Q4 and unblock those deals.
+
+Second: Real-time payment analytics dashboard. Right now our customers get transaction data 24 hours delayed. Two customers in the last quarter have told us that's a problem for fraud operations. A real-time dashboard — even just 15-minute refresh — would be a meaningful differentiator.
+
+Third: Expand 3DS2 to all card types. Right now 3DS2 only covers Visa and Mastercard. Amex is 18% of our transaction volume and not covered. We've gotten one support ticket about a chargeback that 3DS2 would have prevented.
+
+Varsha:
+Let me add one from the EM lens: technical debt. We have a 40% test coverage gap on the payment processor. We've been shipping fast but our regression rate is creeping up. I want us to commit to getting coverage above 60% in Q3.
+
+Arjun:
+I'll add: the API versioning work we just agreed on in the tech discussion yesterday needs to land in Q3. The sprint 44 migration audit is step one, but the full v1 rollout — updating all callers, deprecating unversioned endpoints, publishing the CHANGELOG — is a Q3 project.
+
+Priya:
+OK so let me propose priorities. P0 must-do: SEPA direct debit. This is the clearest business risk — renewal and pipeline deals. P0 also: API versioning v1 rollout. We can't keep breaking clients.
+
+P1 should-do: Test coverage to 60%. I agree with Varsha this is slowing us down. P1 also: 3DS2 for Amex — good risk reduction, not huge effort.
+
+P2 explore: Real-time analytics dashboard. This is valuable but the data infrastructure investment is significant. Let's spike it in Q3 and decide whether to build or buy.
+
+Rohan:
+I want to flag a dependency risk on SEPA. SEPA direct debit requires a European banking partner and a compliance review. That's not all engineering — legal and finance need to be looped in. If legal review takes 6 weeks, which it might, we're starting engineering in August at best. That compresses the timeline significantly.
+
+Priya:
+That's a real risk. Decision: Arjun and I will kick off the SEPA discovery track by June 30 — legal, banking partner conversations, and technical spike — so we know by July 31 whether Q4 delivery is feasible.
+
+Varsha:
+What's not on the list that we're deprioritizing?
+
+Priya:
+Receipt email redesign — parking until Q4. Webhook delivery improvements — not enough customer demand yet. Mobile SDK — we don't have mobile clients yet, premature. Subscription billing improvements — that's a product-level decision above our team; flagging to leadership but not building to it this quarter.
+
+Arjun:
+I agree on all of those. One more deprioritized item: re-architecting the payment processor to microservices. I've heard this raised a few times. Not this quarter. The monolith is working fine and the migration would consume the whole team.
+
+Varsha:
+North star metric for Q3: payment success rate above 99.5% across all methods. If we ship SEPA and Amex 3DS2 and maintain that number, we've had a good quarter. Secondary: customer-reported bugs below 3 per sprint on average.
+
+Priya:
+Agreed. Let me summarize what we've decided and what needs exec sign-off.
+
+Decided: P0 SEPA track starts June 30 with discovery. P0 API v1 rollout in Q3. P1 test coverage to 60%, P1 Amex 3DS2. P2 analytics spike.
+
+Needs exec approval: SEPA banking partner engagement requires legal budget sign-off. I'll send the proposal to leadership by June 25.
+
+---
+[END OF STRATEGY SESSION]

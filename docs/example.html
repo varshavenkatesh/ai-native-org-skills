@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live example — Payments Team Intelligence Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="team-name">&#9670; Team Intelligence Hub</span>
+  <span class="hub-label">ai-native-org-skills</span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="example.html" class="active">Live example</a>
+    <a href="https://github.com/varshavenkatesh/ai-native-org-skills">GitHub</a>
+    <a href="https://github.com/varshavenkatesh/ai-native-org-skills/blob/main/README.md">Docs</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">/</span>
+    <span class="current">Live example</span>
+  </div>
+
+  <div class="page-header">
+    <h1>How the Payments Team Intelligence Hub was built</h1>
+    <div class="page-meta">A walkthrough from raw transcripts to a browsable hub + queryable brain</div>
+  </div>
+
+  <div class="alert alert-blue">
+    <span class="alert-icon">&#128279;</span>
+    <div>
+      <div class="alert-title">See the finished result</div>
+      <div class="alert-body">
+        <a href="https://varshavenkatesh.github.io/payments-context-hub/" target="_blank">Live hub (GitHub Pages)</a> &nbsp;·&nbsp;
+        <a href="https://github.com/varshavenkatesh/payments-context-hub" target="_blank">Source repo</a> &nbsp;·&nbsp;
+        markdown on <code>main</code>, HTML on <code>gh-pages</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">The idea</div>
+  <div class="card" style="margin-bottom:32px">
+    <div class="card-body">
+      <p style="font-size:15px;color:var(--text);line-height:1.7;margin-bottom:12px">Every meeting a team has produces context that usually evaporates — decisions made in a standup, a renewal risk raised in a customer call, priorities set in a strategy session. The hub captures all of it in two forms:</p>
+      <div class="grid-2">
+        <div style="padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px">
+          <div style="font-weight:600;margin-bottom:4px">&#129504; Markdown — for agents</div>
+          <div style="font-size:13px;color:var(--text-muted)">Committed to <code>main</code>. Entity pages, decision logs, ADRs. This is what <code>/RESOLVER</code> reads to answer questions.</div>
+        </div>
+        <div style="padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px">
+          <div style="font-weight:600;margin-bottom:4px">&#128064; HTML — for humans</div>
+          <div style="font-size:13px;color:var(--text-muted)">Published to <code>gh-pages</code>. Tiles, badges, and cross-links anyone on the team can browse — no terminal required.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">One team, configured once</div>
+  <div class="card" style="margin-bottom:32px">
+    <div class="card-body">
+      <div class="card-desc">A single block in <code>config/teams.yaml</code> tells Claude where every artifact for the Payments team should go.</div>
+      <div class="team-list" style="margin-top:4px">
+        <div class="team-pill"><span class="name">Jira</span><span class="role">finova.atlassian.net · project PAY</span></div>
+        <div class="team-pill"><span class="name">GitHub</span><span class="role">varshavenkatesh/payments-context-hub</span></div>
+        <div class="team-pill"><span class="name">Slack</span><span class="role">#payments-team · #payments-leadership</span></div>
+        <div class="team-pill"><span class="name">Hub branch</span><span class="role">gh-pages (GitHub Pages)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Five meetings, fed in one at a time</div>
+
+  <!-- Standup -->
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-accent card-accent-green"></div>
+    <div class="card-body">
+      <div class="card-title">&#9203; Standup <span class="badge badge-gray">May 2, 2026</span></div>
+      <div class="card-desc">A daily standup transcript. Claude pulled out action items, a blocker, a decision, an experiment status, a customer report, and an escalation.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px">
+        <div>
+          <div class="mc-arrow">Produced</div>
+          <ul class="preview-list">
+            <li>2 Jira tickets (PDF bug, retry logic)</li>
+            <li>Decision: idempotency keys → UUID v7 <span class="badge badge-blue">Decisions</span></li>
+            <li>Escalation PR: Salesforce capacity</li>
+            <li>Slack FYI + 6 team member pages</li>
+          </ul>
+        </div>
+        <div>
+          <div class="mc-arrow">Landed on the hub</div>
+          <ul class="preview-list">
+            <li><a href="https://varshavenkatesh.github.io/payments-context-hub/decisions.html" target="_blank">decisions.html</a> — UUID v7 entry</li>
+            <li>Production log — one-click checkout ramp</li>
+            <li>Customer page seeded — Acme/Fintech Corp</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Planning -->
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-accent card-accent-blue"></div>
+    <div class="card-body">
+      <div class="card-title">&#128197; Sprint Planning <span class="badge badge-gray">June 17, 2026</span></div>
+      <div class="card-desc">Sprint 43 planning. Claude built a full sprint prep page — backlog with points, capacity, risks, and cross-team dependencies.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px">
+        <div>
+          <div class="mc-arrow">Produced</div>
+          <ul class="preview-list">
+            <li>6 backlog items (29 pts) as Jira tickets</li>
+            <li>Capacity table (Leila at reduced capacity)</li>
+            <li>3 risks, 3 cross-team dependencies</li>
+          </ul>
+        </div>
+        <div>
+          <div class="mc-arrow">Landed on the hub</div>
+          <ul class="preview-list">
+            <li><a href="https://varshavenkatesh.github.io/payments-context-hub/sprints/sprint-43.html" target="_blank">sprints/sprint-43.html</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer session -->
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-accent card-accent-red"></div>
+    <div class="card-body">
+      <div class="card-title">&#129309; Customer Session <span class="badge badge-gray">June 18, 2026</span> <span class="badge badge-high-risk">High risk surfaced</span></div>
+      <div class="card-desc">A QBR with Fintech Corp (CTO + Head of Finance). Claude preserved direct quotes, graded severity, captured commitments, and flagged a renewal risk.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px">
+        <div>
+          <div class="mc-arrow">Produced</div>
+          <ul class="preview-list">
+            <li>Renewal risk: SEPA gap (Q4 deadline)</li>
+            <li>3 tracked commitments with owners + dates</li>
+            <li>3 positive signals (uptime, conversion, docs)</li>
+            <li>Slack escalation to #payments-leadership</li>
+          </ul>
+        </div>
+        <div>
+          <div class="mc-arrow">Landed on the hub</div>
+          <ul class="preview-list">
+            <li><a href="https://varshavenkatesh.github.io/payments-context-hub/customer-feedback.html" target="_blank">customer-feedback.html</a></li>
+            <li>Fintech Corp customer entity page (markdown)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tech discussion -->
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-accent card-accent-blue"></div>
+    <div class="card-body">
+      <div class="card-title">&#128295; Tech Discussion <span class="badge badge-gray">June 19, 2026</span></div>
+      <div class="card-desc">An API versioning design discussion. Claude wrote a full ADR documenting options, the decision, and consequences.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px">
+        <div>
+          <div class="mc-arrow">Produced</div>
+          <ul class="preview-list">
+            <li>3 decisions <span class="badge badge-adr">ADR</span> (URL versioning, gRPC, deprecation policy)</li>
+            <li>Full ADR markdown with options + tradeoffs</li>
+            <li>Sprint-44 migration spike ticket</li>
+          </ul>
+        </div>
+        <div>
+          <div class="mc-arrow">Landed on the hub</div>
+          <ul class="preview-list">
+            <li><a href="https://varshavenkatesh.github.io/payments-context-hub/decisions.html" target="_blank">decisions.html</a> — 3 ADR entries</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategy -->
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-accent card-accent-purple"></div>
+    <div class="card-body">
+      <div class="card-title">&#127919; Strategy Session <span class="badge badge-gray">June 20, 2026</span></div>
+      <div class="card-desc">Q3 planning with the EM. Claude built a strategy page with OKRs and P0/P1/P2 initiatives, and logged the product decisions.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px">
+        <div>
+          <div class="mc-arrow">Produced</div>
+          <ul class="preview-list">
+            <li>Direction narrative + north-star metrics</li>
+            <li>5 initiatives (2 P0, 2 P1, 1 P2)</li>
+            <li>2 product decisions <span class="badge badge-product">Product</span></li>
+            <li>"Needs exec approval" flag on SEPA budget</li>
+          </ul>
+        </div>
+        <div>
+          <div class="mc-arrow">Landed on the hub</div>
+          <ul class="preview-list">
+            <li><a href="https://varshavenkatesh.github.io/payments-context-hub/strategy.html" target="_blank">strategy.html</a></li>
+            <li><a href="https://varshavenkatesh.github.io/payments-context-hub/decisions.html" target="_blank">decisions.html</a> — product decisions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:36px">The result — browse it now</div>
+  <div class="grid-3" style="margin-bottom:32px">
+    <a href="https://varshavenkatesh.github.io/payments-context-hub/" class="card card-link" target="_blank">
+      <div class="card-accent card-accent-green"></div>
+      <div class="card-body"><div class="card-title">Hub home</div><div class="card-desc" style="margin-bottom:0">Tiles linking to every section, with an open-escalation banner.</div></div>
+      <div class="card-footer"><span class="view-link">Open →</span></div>
+    </a>
+    <a href="https://varshavenkatesh.github.io/payments-context-hub/sprints/sprint-43.html" class="card card-link" target="_blank">
+      <div class="card-accent card-accent-blue"></div>
+      <div class="card-body"><div class="card-title">Sprint 43</div><div class="card-desc" style="margin-bottom:0">Backlog, capacity, risks, dependencies.</div></div>
+      <div class="card-footer"><span class="view-link">Open →</span></div>
+    </a>
+    <a href="https://varshavenkatesh.github.io/payments-context-hub/decisions.html" class="card card-link" target="_blank">
+      <div class="card-accent card-accent-blue"></div>
+      <div class="card-body"><div class="card-title">Decisions</div><div class="card-desc" style="margin-bottom:0">6 decisions — ADRs and product, on a timeline.</div></div>
+      <div class="card-footer"><span class="view-link">Open →</span></div>
+    </a>
+    <a href="https://varshavenkatesh.github.io/payments-context-hub/customer-feedback.html" class="card card-link" target="_blank">
+      <div class="card-accent card-accent-red"></div>
+      <div class="card-body"><div class="card-title">Customer feedback</div><div class="card-desc" style="margin-bottom:0">Fintech Corp risk, commitments, positive signals.</div></div>
+      <div class="card-footer"><span class="view-link">Open →</span></div>
+    </a>
+    <a href="https://varshavenkatesh.github.io/payments-context-hub/strategy.html" class="card card-link" target="_blank">
+      <div class="card-accent card-accent-purple"></div>
+      <div class="card-body"><div class="card-title">Q3 Strategy</div><div class="card-desc" style="margin-bottom:0">OKRs, initiatives, what we're not doing.</div></div>
+      <div class="card-footer"><span class="view-link">Open →</span></div>
+    </a>
+    <a href="https://github.com/varshavenkatesh/payments-context-hub" class="card card-link" target="_blank">
+      <div class="card-accent card-accent-green"></div>
+      <div class="card-body"><div class="card-title">Markdown brain</div><div class="card-desc" style="margin-bottom:0">The agent-queryable source on the <code>main</code> branch.</div></div>
+      <div class="card-footer"><span class="view-link">Open →</span></div>
+    </a>
+  </div>
+
+  <div class="alert alert-blue">
+    <span class="alert-icon">&#128640;</span>
+    <div>
+      <div class="alert-title">Build your own</div>
+      <div class="alert-body">Clone <a href="https://github.com/varshavenkatesh/ai-native-org-skills" target="_blank">ai-native-org-skills</a>, configure your team, and run <code>/RESOLVER</code> on your next meeting transcript. <a href="index.html#get-started">See the 4-step setup →</a></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Built with <a href="https://claude.ai/code">Claude Code</a> &nbsp;·&nbsp;
+  <a href="https://github.com/varshavenkatesh/ai-native-org-skills">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://varshavenkatesh.github.io/payments-context-hub/">Live example hub</a>
+</footer>
+
+</body>
+</html>
